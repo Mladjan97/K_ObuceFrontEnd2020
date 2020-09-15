@@ -28,17 +28,17 @@ export default class CategoryPage extends React.Component<CategoryPageProperties
     render() {
         return (
             <Container>
-            <Card>
-                <Card.Body>
-                    <Card.Title>
-                        <FontAwesomeIcon icon={ faListAlt } /> { this.state.category?.name }
-                    </Card.Title>
-                    <Card.Text>
-                       Here, we will have our articles...
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-        </Container>
+                <Card>
+                    <Card.Body>
+                        <Card.Title>
+                            <FontAwesomeIcon icon={ faListAlt } /> { this.state.category?.name }
+                        </Card.Title>
+                        <Card.Text>
+                        Here, we will have our articles...
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </Container>
         );
     }
 

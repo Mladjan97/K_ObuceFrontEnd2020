@@ -5,6 +5,7 @@ export default function api(
     path: string,
     method: 'get' | 'post' | 'patch' | 'delete',
     body: any | undefined,
+    role: 'administrator' = 'administrator',
 ) {
    return new Promise<ApiResponse>((resolve) => {
        const requestData = {
@@ -14,7 +15,7 @@ export default function api(
         data: JSON.stringify(body),
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': getToken(),
+            'Authorization': getToken(role),
         },
     };
 
@@ -22,7 +23,7 @@ export default function api(
         .then(res => responseHandler(res, resolve))
         .catch(async err => {
             if (err.response.status === 401) {
-                const newToken = await refreshToken();
+                const newToken = await refreshToken(role);
     
                 if(!newToken) {
                     const response: ApiResponse = {
@@ -33,9 +34,9 @@ export default function api(
                    return resolve(response);
                 }
     
-                saveToken(newToken);
+                saveToken(role, newToken);
     
-                requestData.headers['Authorization'] = getToken();
+                requestData.headers['Authorization'] = getToken(role);
     
                 return await repeatRequest(requestData, resolve);
             }
@@ -84,28 +85,37 @@ async function responseHandler(
     return resolve(response);
 }
 
-function getToken(): string {
-    const token = localStorage.getItem('api_token');
+function getToken(role: 'administrator'): string {
+    const token = localStorage.getItem('api_token' + role);
     return 'Berer ' + token;
 }
 
-export function saveToken(token: string) {
-    localStorage.setItem('api_token', token);
+export function saveToken(role: 'administrator', token: string) {
+    localStorage.setItem('api_token' + role, token);
 }
 
-function getRefreshToken(): string {
-    const token = localStorage.getItem('api_refresh_token');
+function getRefreshToken(role: 'administrator'): string {
+    const token = localStorage.getItem('api_refresh_token' + role);
     return token + '';
 }
 
-export function saveRefreshToken(token: string) {
-    localStorage.setItem('api_refresh_token', token);
+export function saveRefreshToken(role: 'administrator', token: string) {
+    localStorage.setItem('api_refresh_token' + role, token);
 }
 
-async function refreshToken(): Promise<string | null> {
-    const path = 'auth/admin/refresh';
+export function saveIdentity(role: 'administrator', identity: string) {
+    localStorage.setItem('api_identity' + role, identity);
+}
+
+export function getIdentity(role: 'administrator'): string {
+    const token = localStorage.getItem('api_identity' + role);
+    return 'Berer ' + token;
+}
+
+async function refreshToken(role: 'administrator'): Promise<string | null> {
+    const path = 'auth/' + role + '/refresh';
     const data = {
-        token: getRefreshToken(),
+        token: getRefreshToken(role),
     }
 
     const refreshTokenrequestData: AxiosRequestConfig = {

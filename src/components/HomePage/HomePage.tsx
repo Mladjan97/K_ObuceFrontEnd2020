@@ -3,11 +3,12 @@ import { Container, Card, Row, Col } from 'react-bootstrap';
 import { faListAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import CategoryType from '../../types/CategoryType';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import api, { ApiResponse } from '../../api/api';
 
 
 interface HomePageState {
+  isAdministratorLoggedIn: boolean;
   categories: CategoryType[];
 }
 
@@ -23,6 +24,7 @@ class HomePage extends React.Component {
    super(props);
     
    this.state = {
+    isAdministratorLoggedIn: true,
      categories: [],
    };
   }
@@ -31,13 +33,23 @@ class HomePage extends React.Component {
     this.getCategories();
   }
 
-  componentWillUpdate() {
-   this.getCategories();
-}
+//   componentWillUpdate() {
+//    this.getCategories();
+// }
+
+  private setLogginState(isLoggedIn: boolean) {
+    this.setState(Object.assign(this.state, {
+        isAdministratorLoggedIn: isLoggedIn,
+    }));
+  }
 
   private getCategories() {
     api('api/category/', 'get', {})
     .then( (res: ApiResponse) => {
+      if (res.status === "error" || res.status === "login") {
+        this.setLogginState(false);
+        return;
+      }
       this.putCategoriesInState(res.data);
     });
   }
@@ -59,12 +71,18 @@ class HomePage extends React.Component {
    }
 
     render() {
+      if(this.state.isAdministratorLoggedIn === false) {
+        return(
+          <Redirect to="/administrator/login" />
+        );
+      }
+
     return (
       <Container>
                 <Card>
                     <Card.Body>
                         <Card.Title>
-                            <FontAwesomeIcon icon={ faListAlt } /> Top level categories
+                            <FontAwesomeIcon icon={ faListAlt } /> Categories
                         </Card.Title>
                       <Row>
                         { this.state.categories.map(this.singleCategory) }

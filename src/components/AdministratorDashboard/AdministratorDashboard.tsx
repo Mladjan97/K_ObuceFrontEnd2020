@@ -47,7 +47,7 @@ class AdministratorDashboard extends React.Component {
     render() {
         if(this.state.isAdministratorLoggedIn === false) {
             return (
-                <Redirect to ="administrator/login" />
+                <Redirect to ="/administrator/login" />
             );
         }
 

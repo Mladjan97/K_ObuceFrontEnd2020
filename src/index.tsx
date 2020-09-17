@@ -8,12 +8,12 @@ import 'jquery/dist/jquery.js';
 import 'popper.js/dist/popper.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
-import { MainMenu, MainMenuItem } from './components/MainMenu/MainMenu';
 import { HashRouter, Route , Switch } from 'react-router-dom';
 import ContactPage from './components/ContactPage/ContactPage';
 import AdminLoginPage from './components/AdminLoginPage/AdminLoginPage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import AdministratorDashboard from './components/AdministratorDashboard/AdministratorDashboard';
+import { MainMenu, MainMenuItem } from './components/MainMenu/MainMenu';
 
 const menuItems = [
   new MainMenuItem("Home", "/"),

@@ -28,7 +28,7 @@ interface CategoryPageState {
         keywords: string;
         priceMinimum: number;
         priceMaximum: number;
-        order: "name asc" | "name desc" | "price asc" | "price desc";
+        order: "title asc" | "title desc" | "price asc" | "price desc";
     };
 }
 
@@ -174,8 +174,8 @@ export default class CategoryPage extends React.Component<CategoryPageProperties
                 <Form.Group>
                     <Form.Control as="select" id="sortOrder" value ={ this.state.filters.order }
                                                              onChange={ (e) => this.filterOrderChanged(e as any) }>
-                        <option value="name asc">Sort by name - ascendig</option>
-                        <option value="name desc">Sort by name - descending</option>
+                        <option value="title asc">Sort by name - ascendig</option>
+                        <option value="title desc">Sort by name - descending</option>
                         <option value="price asc">Sort by price - ascendig</option>
                         <option value="price desc">Sort by price - descending</option>
                     </Form.Control>

@@ -13,17 +13,15 @@ import ContactPage from './components/ContactPage/ContactPage';
 import AdminLoginPage from './components/AdminLoginPage/AdminLoginPage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import AdministratorDashboard from './components/AdministratorDashboard/AdministratorDashboard';
-import { MainMenu, MainMenuItem } from './components/MainMenu/MainMenu';
 
-const menuItems = [
-  new MainMenuItem("Home", "/"),
-  new MainMenuItem("Contact", "/contact/"),
-  new MainMenuItem("Administrator log in", "/administrator/login/"),
-];
+// const menuItems = [
+//   new MainMenuItem("Home", "/"),
+//   new MainMenuItem("Contact", "/contact/"),
+//   new MainMenuItem("Administrator log in", "/administrator/login/"),
+// ];
 
 ReactDOM.render(
   <React.StrictMode>
-    <MainMenu items={ menuItems }></MainMenu>
     <HashRouter>
       <Switch>
         <Route exact path="/" component= { HomePage } />

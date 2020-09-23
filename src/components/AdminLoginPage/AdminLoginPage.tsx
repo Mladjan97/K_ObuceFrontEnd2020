@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import api, { ApiResponse, saveToken, saveRefreshToken, saveIdentity } from '../../api/api';
 import { Redirect } from 'react-router-dom';
+import RoledMainMenu from '../RoledMainMenu/RoledMainMenu';
 
 interface AdminLoginPageState {
     username: string;
@@ -98,6 +99,7 @@ export default class AdminLoginPage extends React.Component {
 
         return (
             <Container>
+                <RoledMainMenu role="visitor" />
                 <Col md={ { span: 6, offset: 3 } }>
                     <Card>
                         <Card.Body>

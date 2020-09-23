@@ -254,7 +254,7 @@ export default class CategoryPage extends React.Component<CategoryPageProperties
     }
 
     private getCategoryData() {
-        api('api/category/' + this.props.match.params.cId, 'get', {})
+        api('visitor/category/' + this.props.match.params.cId, 'get', {})
         .then((res: ApiResponse) => {
             if (res.status ==='error'){
                 return this.setMessage('Request error. Please try to refresh the page.')
@@ -272,7 +272,7 @@ export default class CategoryPage extends React.Component<CategoryPageProperties
         const orderBy = orderParts[0];
         const orderDirection = orderParts[1].toUpperCase();
 
-        api('api/product/search/', 'post', {
+        api('visitor/search/', 'post', {
             categoryId: Number(this.props.match.params.cId),
             // size: 43,
             color: "",

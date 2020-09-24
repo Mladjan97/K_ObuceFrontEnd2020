@@ -13,12 +13,8 @@ import ContactPage from './components/ContactPage/ContactPage';
 import AdminLoginPage from './components/AdminLoginPage/AdminLoginPage';
 import CategoryPage from './components/CategoryPage/CategoryPage';
 import AdministratorDashboard from './components/AdministratorDashboard/AdministratorDashboard';
-
-// const menuItems = [
-//   new MainMenuItem("Home", "/"),
-//   new MainMenuItem("Contact", "/contact/"),
-//   new MainMenuItem("Administrator log in", "/administrator/login/"),
-// ];
+import AdministratorDashboardCategory from './components/AdministratorDashboardCategory/AdministratorDashboardCategory';
+import { AdminLogoutPage } from './components/AdminLogoutPage/AdminLogoutPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,8 +23,11 @@ ReactDOM.render(
         <Route exact path="/" component= { HomePage } />
         <Route path ="/contact" component = { ContactPage } />
         <Route path ="/administrator/login" component = { AdminLoginPage } />
-        <Route path ="/administrator/dashboard" component = { AdministratorDashboard } />
+        <Route path ="/administrator/logout" component = { AdminLogoutPage } />
         <Route path ="/category/:cId" component= { CategoryPage } />
+        <Route exact path ="/administrator/dashboard" component = { AdministratorDashboard } />
+        <Route path ="/administrator/dashboard/category" component = { AdministratorDashboardCategory } />
+        {/* <Route path ="/administrator/dashboard/product" component = { AdministratorDashboardProduct } /> */}
       </Switch>
     </HashRouter>
   </React.StrictMode>,

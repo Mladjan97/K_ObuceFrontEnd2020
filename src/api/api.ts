@@ -112,6 +112,12 @@ export function getIdentity(role: 'administrator'): string {
     return 'Berer ' + token;
 }
 
+export function removeTokenData(role: 'administrator') {
+    localStorage.removeItem('api_token' + role);
+    localStorage.removeItem('api_refresh_token' + role);
+    localStorage.removeItem('api_identity' + role);
+}
+
 async function refreshToken(role: 'administrator'): Promise<string | null> {
     const path = 'auth/' + role + '/refresh';
     const data = {

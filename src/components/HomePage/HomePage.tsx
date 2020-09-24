@@ -6,16 +6,12 @@ import CategoryType from '../../types/CategoryType';
 import { Link, Redirect } from 'react-router-dom';
 import api, { ApiResponse } from '../../api/api';
 import RoledMainMenu from '../RoledMainMenu/RoledMainMenu';
+import ApiCategoryDto from '../../dtos/ApiCategoryDto';
 
 
 interface HomePageState {
   isAdministratorLoggedIn: boolean;
   categories: CategoryType[];
-}
-
-interface ApiCategoryDto {
-  categoryId: number;
-  name: string;
 }
 
 class HomePage extends React.Component {
@@ -33,10 +29,6 @@ class HomePage extends React.Component {
   componentWillMount() {
     this.getCategories();
   }
-
-//   componentWillUpdate() {
-//    this.getCategories();
-// }
 
   private setLogginState(isLoggedIn: boolean) {
     this.setState(Object.assign(this.state, {

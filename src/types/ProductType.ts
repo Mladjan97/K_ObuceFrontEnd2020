@@ -4,4 +4,23 @@ export default class ProductType {
     description?: string;
     imageUrl?: string;
     price?: number;
+
+    categoryId?: number;
+    productMaterialId?: number;
+    pictures?: {
+        pictureId: number;
+        imagePath: string;
+    }[];
+    productPrices?: {
+        productPriceId: number;
+        price: number;
+    }[];
+
+    category?: {
+        name: string;
+    };
+    
+    productMaterial?: {
+        materialName: string;
+    };
 }

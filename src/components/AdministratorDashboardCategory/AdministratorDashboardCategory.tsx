@@ -1,8 +1,8 @@
 import React from 'react';
-import { Container, Card, Table, Button, Modal, Form, Alert } from 'react-bootstrap';
-import { faListAlt, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { Container, Card, Table, Button, Modal, Form, Alert, Nav } from 'react-bootstrap';
+import { faListAlt, faPlus, faEdit, faBackward } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import api, { ApiResponse } from '../../api/api';
 import RoledMainMenu from '../RoledMainMenu/RoledMainMenu';
 import CategoryType from '../../types/CategoryType';
@@ -102,7 +102,7 @@ class AdministratorDashboardCategory extends React.Component {
         ));
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.getCategories();
     }
 
@@ -155,6 +155,13 @@ class AdministratorDashboardCategory extends React.Component {
                         <Card.Title>
                             <FontAwesomeIcon icon={ faListAlt } /> Categories
                         </Card.Title>
+                        <Nav className="mb-3">
+                                <Nav.Item>
+                                    <Link to="/administrator/dashboard/" className="btn btn-sm btn-info">
+                                        <FontAwesomeIcon icon={ faBackward } /> Go back to dashboard
+                                    </Link>
+                                </Nav.Item>
+                            </Nav>
                        <Table hover size="sm" bordered>
                         <thead>
                             <tr>

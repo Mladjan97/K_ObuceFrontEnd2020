@@ -23,4 +23,10 @@ export default class ProductType {
     productMaterial?: {
         materialName: string;
     };
+
+    inStocks?: {
+        quantity: number;
+        size: number;
+        color: string;
+    }[];
 }

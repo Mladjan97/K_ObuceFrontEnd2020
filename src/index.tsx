@@ -17,6 +17,7 @@ import AdministratorDashboardCategory from './components/AdministratorDashboardC
 import { AdminLogoutPage } from './components/AdminLogoutPage/AdminLogoutPage';
 import AdministratorDashboardProduct from './components/AdministratorDashboardProduct/AdministratorDashboardProduct';
 import AdministratorDashboardPicture from './components/AdministratorDashboardPicture/AdministratorDashboardPicture';
+import ProductPage from './components/ProductPage/ProductPage';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route path ="/administrator/login" component = { AdminLoginPage } />
         <Route path ="/administrator/logout" component = { AdminLogoutPage } />
         <Route path ="/category/:cId" component= { CategoryPage } />
+        <Route path ="/product/:pId" component= { ProductPage } />
         <Route exact path ="/administrator/dashboard" component = { AdministratorDashboard } />
         <Route path ="/administrator/dashboard/category" component = { AdministratorDashboardCategory } />
         <Route path ="/administrator/dashboard/product" component = { AdministratorDashboardProduct } />

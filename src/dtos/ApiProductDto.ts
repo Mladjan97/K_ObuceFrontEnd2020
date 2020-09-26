@@ -20,4 +20,10 @@ export default interface ApiProductDto {
     productMaterial?: {
         materialName: string;
     };
+
+    inStocks: {
+        quantity: number;
+        size: number;
+        color: string;
+    }[];
 }

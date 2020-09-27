@@ -18,6 +18,7 @@ import { AdminLogoutPage } from './components/AdminLogoutPage/AdminLogoutPage';
 import AdministratorDashboardProduct from './components/AdministratorDashboardProduct/AdministratorDashboardProduct';
 import AdministratorDashboardPicture from './components/AdministratorDashboardPicture/AdministratorDashboardPicture';
 import ProductPage from './components/ProductPage/ProductPage';
+import AdministratorDashboardInStock from './components/AdministratorDashboardInStock/AdministratorDashboardInStock';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -31,6 +32,7 @@ ReactDOM.render(
         <Route path ="/product/:pId" component= { ProductPage } />
         <Route exact path ="/administrator/dashboard" component = { AdministratorDashboard } />
         <Route path ="/administrator/dashboard/category" component = { AdministratorDashboardCategory } />
+        <Route path ="/administrator/dashboard/inStock" component = { AdministratorDashboardInStock } />
         <Route path ="/administrator/dashboard/product" component = { AdministratorDashboardProduct } />
         <Route path ="/administrator/dashboard/picture/:pId" component = { AdministratorDashboardPicture } />
       </Switch>
